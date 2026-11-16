@@ -1,0 +1,24 @@
+AL FAZAL FAMILY RESTAURANT — DEPLOYMENT NOTES
+
+1. Upload ALL CONTENTS of this ZIP directly to the GitHub Pages publishing root.
+2. index.html must be at the root beside styles.css and app.js.
+3. Keep the assets folder and all files inside it unchanged.
+4. GitHub Pages: Settings > Pages > Deploy from a branch > main > /(root).
+
+n8n settings:
+- Webhook URL used by the website:
+  https://abdullahagent11.app.n8n.cloud/webhook/al-fazal-chat
+- HTTP Method: POST
+- Path: al-fazal-chat
+- Authentication: None
+- Respond: Using Respond to Webhook Node
+- Allowed Origins (CORS): https://alfazalfaimlyrestaurant.netlify.app
+  (No trailing slash.)
+
+The frontend sends: { "message": "...", "sessionId": "..." }
+This matches the supplied n8n Validate Chat Input code, which reads body.message and body.sessionId.
+
+IMPORTANT:
+- Activate the n8n workflow before testing the production webhook.
+- The n8n Webhook node's Allowed Origins setting must be changed manually in n8n.
+- This ZIP cannot change your n8n cloud workflow settings.
